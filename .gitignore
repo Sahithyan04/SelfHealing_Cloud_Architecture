@@ -1,10 +1,11 @@
 # === TERRAFORM ===
-# Local .terraform directories
+# Local .terraform directories (anywhere in repo)
 **/.terraform/*
-**/.terraform.lock.hcl
-.terraform/*
+.terraform/
+
+# Terraform lock file
 .terraform.lock.hcl
-.terraform
+
 # Terraform state files
 *.tfstate
 *.tfstate.*
@@ -15,7 +16,7 @@ crash.*.log
 *.tfvars
 *.tfvars.json
 
-# Sensitive auto-generated files
+# Sensitive or local overrides
 override.tf
 override.tf.json
 *_override.tf
@@ -25,8 +26,9 @@ override.tf.json
 .terraformrc
 terraform.rc
 
+
 # === LINUX & EDITOR FILES ===
-# Common system files
+# System junk
 .DS_Store
 Thumbs.db
 ehthumbs.db
