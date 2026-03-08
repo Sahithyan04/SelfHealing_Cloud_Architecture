@@ -27,19 +27,20 @@ The project was tested locally using LocalStack to simulate AWS services without
 5. The Lambda function identifies the failed instance and launches a replacement.
 
 ## Project Structure
+
 self-healing-infra/
 │
-├── Terraform/
-│ ├── main.tf
-│ ├── lambda.tf
-│ ├── provider.tf
-│ ├── variables.tf
-│ ├── outputs.tf
-│ └── terraform.tfvars
+├── terraform/
+│   ├── main.tf
+│   ├── provider.tf
+│   ├── variables.tf
+│   ├── outputs.tf
+│   ├── lambda.tf
+│   └── terraform.tfvars
 │
-├── Scripts/
-│ ├── lambda_function.py
-│ └── setup.sh
+├── scripts/
+│   ├── lambda_function.py
+│   └── setup.sh
 │
 └── README.md
 
@@ -49,13 +50,15 @@ self-healing-infra/
 1. Start LocalStack (optional for local testing).
 
 2. Initialize Terraform:
+```
 terraform init
-
-3. Apply the infrastructure:
+```
+4. Apply the infrastructure:
+```
 terraform apply
+```
 
-
-4. Verify resources using the AWS CLI or LocalStack endpoint.
+5. Verify resources using the AWS CLI or LocalStack endpoint.
 
 ## Purpose
 
