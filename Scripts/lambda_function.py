@@ -11,7 +11,7 @@ def lambda_handler(event, context):
     print(f"🔍 Instance {instance_id} changed state to {state}")
 
     if state == "stopped" or state == "terminated":
-        print(f"⚠️ Instance {instance_id} is unhealthy. Replacing...")
+        print(f"Instance {instance_id} is unhealthy. Replacing...")
         try:
             response = ec2.describe_instances(InstanceIds=[instance_id])
             instance = response['Reservations'][0]['Instances'][0]
@@ -21,7 +21,7 @@ def lambda_handler(event, context):
             subnet_id = instance['SubnetId']
             security_group_ids = [sg['GroupId'] for sg in instance['SecurityGroups']]
 
-            print("🛠️ Launching replacement instance...")
+            print("Launching replacement instance...")
             new_instance = ec2.run_instances(
                 ImageId=ami_id,
                 InstanceType=instance_type,
@@ -41,9 +41,9 @@ def lambda_handler(event, context):
             )
 
             new_id = new_instance['Instances'][0]['InstanceId']
-            print(f"✅ New instance launched: {new_id}")
+            print(f"New instance launched: {new_id}")
 
         except Exception as e:
-            print(f"❌ Error replacing instance: {str(e)}")
+            print(f"[Error] Error replacing instance: {str(e)}")
     else:
-        print("🟢 Instance healthy. No action taken.")
+        print("Instance healthy. No action taken.")
